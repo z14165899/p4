@@ -16,14 +16,14 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('name');
             $table->string('subject');
             $table->string('location');
             $table->integer('date');
             $table->integer('start_time');
             $table->integer('end_time');
-            $table->string('preferred_instructors')->nullable();
+            $table->integer('phone')->nullable();
             $table->string('topic');
-            $table->string('special_request')->nullable();
         });
     }
 
