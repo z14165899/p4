@@ -13,6 +13,14 @@
 
 Route::get('/', 'P4Controller@index');
 
+Route::get('/manage', 'P4Controller@manage');
+
+Route::get('/appointment', 'P4Controller@appointment');
+
+Route::get('/reservations', 'P4Controller@reservations');
+
+Route::get('/register', 'P4Controller@register');
+
 Route::get('/env', function () {
     dump(config('app.name'));
     dump(config('app.env'));

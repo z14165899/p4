@@ -1,10 +1,23 @@
 @extends('layouts.master')
 
+@push('head')
+    <link href='/css/index.css' rel='stylesheet'>
+@endpush
+
 @section('title')
-    The Tutoring Appointment Reservation
+    Welcome to Tutoring Session
 @endsection
 
 @section('content')
-<h1>The Tutoring Appointment Reservation</h1>
+<h1>Register an Account and Let us Help You Handle All the Troubles in Your Studies </h1>
+<p>We have served thousands of student on their courses from high school to university so that they can earn the ideal grade they deserve!<p>
+<h2>Our Most Popular Courses Below<h2>
+  @foreach($courses as $course)
+        <div>
+            <img src='{{ $course['image'] }}' alt='Course image for {{ $course['name'] }}'>
+            <h2>{{ $course['name'] }}</h2>
+            <p>By {{ $course['instructors'] }}</p>
+        </div>
+    @endforeach
 
 @endsection

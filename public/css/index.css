@@ -1,0 +1,16 @@
+h1, h2, p{
+	text-align: center;
+	margin: 8px;
+}
+
+div{
+	float:left;
+	text-align: center;
+	margin: 1em;
+}
+
+
+div img{
+	height: 400px;
+	width: 300px;
+}

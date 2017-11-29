@@ -1,0 +1,27 @@
+form {
+    margin: 30px;
+    text-align: center;
+    border-style: ridge;
+    padding: 15px;
+}
+
+label {
+    margin-top:20px;
+    display:block;
+    font-size:1.2rem;
+    letter-spacing:.75px;
+    font-weight:bold;
+}
+
+input{
+	width:20%;
+	height:3em;
+	margin: 1em;
+}
+
+input[type='submit']{
+	margin: 3em;
+    font: 1.3em bold;
+    width: 20%;
+    height: 5em;
+}

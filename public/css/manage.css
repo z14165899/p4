@@ -1,0 +1,18 @@
+h1{
+	text-align: center;
+}
+
+div{
+	float:left;
+	text-align: center;
+	margin: 1em;
+}
+
+div h2,p{
+	margin: 8px;
+}
+
+div img{
+	height: 400px;
+	width: 300px;
+}
