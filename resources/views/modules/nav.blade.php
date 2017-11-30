@@ -5,7 +5,7 @@
     # necessary to look in a logic file in order to edit link labels
     $nav = [
         'register' => 'Register',
-        'courses' => 'Courses',
+        '' => 'Courses',
         'appointment' => 'Make an Appointment',
         'reservations' => 'My Appointments',
         'manage' => 'Management',

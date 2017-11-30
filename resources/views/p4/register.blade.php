@@ -12,7 +12,7 @@
 
     <h1>You can register by filling out the form below and start to enjoy our services!</h1>
 
-    <form method='POST' action='/Appointment'>
+    <form method='POST' action='/reservations'>
 
         {{ csrf_field() }}
 

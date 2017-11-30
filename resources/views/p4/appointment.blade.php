@@ -12,7 +12,7 @@
 
     <h1>Make a New Appointment</h1>
 
-    <form method='POST' action='/Appointment'>
+    <form method='POST' action='/reservations'>
 
         {{ csrf_field() }}
 

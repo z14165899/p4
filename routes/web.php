@@ -15,7 +15,10 @@ Route::get('/', 'P4Controller@index');
 
 Route::get('/manage', 'P4Controller@manage');
 
+#Make an Appointment
 Route::get('/appointment', 'P4Controller@appointment');
+Route::post('/reservations', 'P4Controller@reservation');
+
 
 Route::get('/reservations', 'P4Controller@reservations');
 
