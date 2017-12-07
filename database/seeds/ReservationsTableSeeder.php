@@ -13,12 +13,12 @@ class ReservationsTableSeeder extends Seeder
     public function run()
     {
         $reservations = [
-        ['Brooke Williams', 'Math 12', '1677 Hazy Extension, Horsefly BC', '20171212', '1230', '1430', '2366079','Polynomial Equations'],
-        ['Lynn	Shaw', 'Chemsitry 11', '7109 Heather Island Place, Mcdames Creek BC', '20171210', '1330', '1530','7920675','Classification of Matter'],
-        ['Juana	Hubbard', 'Physics 12', '5523 Old Creek Byway, Canyon City BC','20171213', '1030', '1230', '7940877','Dynamics'],
-        ['Tanya	Day', 'Physics 11', '9459 Velvet Panda Heights, Blue River BC', '20171130', '1600', '1800', '7806909','Uniform Acceleration'],
-        ['Carl Casey', 'Chemsitry 12', '6741 Merry Corner, Cherryville BC','20171128', '1600', '1800','7708538', 'Reaction Kinetics'],
-        ['Warren Snyder', 'Math 11', '9997 Stony Horse Parade, Nootka BC', '20171201', '1300', '1500', '9265147',  'Radical Equation'],
+        ['Brooke Williams', 'Math 12', '1677 Hazy Extension, Horsefly BC', '20171212', '123000', '143000', '7782366079','Polynomial Equations'],
+        ['Lynn	Shaw', 'Chemsitry 11', '7109 Heather Island Place, Mcdames Creek BC', '20171210', '133000', '153000','6047920675','Classification of Matter'],
+        ['Juana	Hubbard', 'Physics 12', '5523 Old Creek Byway, Canyon City BC','20171213', '103000', '123000', '7787940877','Dynamics'],
+        ['Tanya	Day', 'Physics 11', '9459 Velvet Panda Heights, Blue River BC', '20171130', '160000', '180000', '6047806909','Uniform Acceleration'],
+        ['Carl Casey', 'Chemsitry 12', '6741 Merry Corner, Cherryville BC','20171128', '160000', '180000','6047708538', 'Reaction Kinetics'],
+        ['Warren Snyder', 'Math 11', '9997 Stony Horse Parade, Nootka BC', '20171201', '130000', '150000', '7789265147',  'Radical Equation'],
     ];
 
     

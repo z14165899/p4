@@ -18,9 +18,10 @@ class CreateCoursesTable extends Migration
             $table->timestamps();            
             $table->string('name');
             $table->string('level');
-            $table->string('instructors');
+            $table->string('instructor');
             $table->string('image')->comment('Expect an URL of an image');;
             $table->string('description');
+            $table->string('price');
             $table->string('link')->comment('Expect an URL of a link');
         });
     }

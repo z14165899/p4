@@ -13,8 +13,8 @@
 @foreach($courses as $course)
         <div>
             <img src='{{ $course['image'] }}' alt='Course image for {{ $course['name'] }}'>
-            <h2>{{ $course['name'] }}</h2>
-            <p>By {{ $course['instructors'] }}</p>
+            <h2>{{ $course['name'] }} {{$course['level']}}</h2>
+            <p>By {{ $course['instructor'] }}</p>
             <a href='/course/{{ $course['id'] }}'>View</a> |
             <a href='/course/{{ $course['id'] }}/edit'>Edit</a> |
             <a href='/course/{{ $course['id'] }}/delete'>Delete</a>

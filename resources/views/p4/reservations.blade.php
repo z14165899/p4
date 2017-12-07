@@ -22,9 +22,8 @@
             <p>End Time: {{ $reservation['end_time'] }}</p>
             <p>Phone Number: {{ $reservation['phone'] }}</p>
             <p>Topic: {{ $reservation['topic'] }}</p>
-            <a href='/course/{{ $reservation['id'] }}'>View</a> |
-            <a href='/course/{{ $reservation['id'] }}/edit'>Edit</a> |
-            <a href='/course/{{ $reservation['id'] }}/delete'>Delete</a>
+            <a href='/reservation/{{ $reservation['id'] }}/edit'>Edit</a> |
+            <a href='/reservation/{{ $reservation['id'] }}/delete'>Delete</a>
         </div>
     @endforeach
 

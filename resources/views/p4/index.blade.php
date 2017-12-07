@@ -15,8 +15,8 @@
   @foreach($courses as $course)
         <div>
             <img src='{{ $course['image'] }}' alt='Course image for {{ $course['name'] }}'>
-            <h2>{{ $course['name'] }}</h2>
-            <p>By {{ $course['instructors'] }}</p>
+            <h2>{{ $course['name'] }} {{ $course['level'] }}</h2>
+            <p>By {{ $course['instructor'] }}</p>
         </div>
     @endforeach
 

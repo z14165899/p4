@@ -19,10 +19,10 @@ class CreateReservationsTable extends Migration
             $table->string('name');
             $table->string('subject');
             $table->string('location');
-            $table->integer('date');
-            $table->integer('start_time');
-            $table->integer('end_time');
-            $table->integer('phone')->nullable();
+            $table->date('date');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->string('phone')->nullable();
             $table->string('topic');
         });
     }
