@@ -15,7 +15,7 @@
     <div>
     @foreach($reservations as $reservation)
         <div>
-            <h2>{{ $reservation['name'] }}</h2>
+            <h2>{{ $reservation['student']['first_name'] }} {{ $reservation['student']['last_name'] }}</h2>
             <p>Subject: {{ $reservation['subject'] }}</p>
             <p>Location: {{ $reservation['location'] }}</p>
             <p>Date: {{ $reservation['date'] }}</p>
@@ -23,6 +23,8 @@
             <p>End Time: {{ $reservation['end_time'] }}</p>
             <p>Phone Number: {{ $reservation['phone'] }}</p>
             <p>Topic: {{ $reservation['topic'] }}</p>
+            <p>Demands:
+
             <a href='/reservation/{{ $reservation['id'] }}/edit'>Edit</a> |
             <a href='/reservation/{{ $reservation['id'] }}/delete'>Delete</a>
         </div>

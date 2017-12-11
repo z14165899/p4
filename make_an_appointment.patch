@@ -1,0 +1,118 @@
+diff --git a/app/Http/Controllers/P4Controller.php b/app/Http/Controllers/P4Controller.php
+index c7caa95..a0247b9 100644
+--- a/app/Http/Controllers/P4Controller.php
++++ b/app/Http/Controllers/P4Controller.php
+@@ -200,7 +200,7 @@ class P4Controller extends Controller
+     //Show all Reservations
+     public function reservations()
+     {
+-    	$reservations = Reservation::orderBy('name')->get();
++    	$reservations = Reservation::leftJoin('students', 'reservations.student_id', '=', 'students.id')->orderBy('students.first_name')->get();
+ 
+         return view('p4.reservations')->with([
+             'reservations' => $reservations,
+@@ -210,7 +210,7 @@ class P4Controller extends Controller
+     //Make an Appointment
+     public function reserve(Request $request){
+     	 $this->validate($request, [
+-    	  	'name' => 'required',
++    	  	'student_id' => 'required',
+             'subject' => 'required|min:3',
+             'location' => 'required|min:5',
+             'date' => 'required|date',
+@@ -222,7 +222,6 @@ class P4Controller extends Controller
+ 
+         # Add a new reservation to the database
+         $reservation = new Reservation();
+-        $reservation->name = $request->input('name');
+         $reservation->subject = $request->input('subject');
+         $reservation->location = $request->input('location');
+         $reservation->date = $request->input('date');
+@@ -230,11 +229,14 @@ class P4Controller extends Controller
+         $reservation->end_time = $request->input('end_time');
+         $reservation->phone = $request->input('phone');
+         $reservation->topic = $request->input('topic');
+-        $reservation->student_id = $request->input('student');
++        $reservation->student_id = $request->input('student_id');
+         $reservation->save();
+         $reservation->demands()->sync($request->input('demands'));
+ 
+-        return redirect('/reservations')->with('alert', 'This reservation of '.$request->input('name').' was added.');
++        $student = Student::where('id', $request->input('student_id'))->first();
++        $student_name = $student->first_name.' '.$student->last_name;
++
++        return redirect('/reservations')->with('alert', 'This reservation of '.$student_name.' was added.');
+     }
+ }
+ 
+diff --git a/database/migrations/2017_11_08_212157_create_reservations_table.php b/database/migrations/2017_11_08_212157_create_reservations_table.php
+index 68e9fd5..7ae7ce9 100644
+--- a/database/migrations/2017_11_08_212157_create_reservations_table.php
++++ b/database/migrations/2017_11_08_212157_create_reservations_table.php
+@@ -16,7 +16,6 @@ class CreateReservationsTable extends Migration
+         Schema::create('reservations', function (Blueprint $table) {
+             $table->increments('id');
+             $table->timestamps();
+-            $table->string('name');
+             $table->string('subject');
+             $table->string('location');
+             $table->date('date');
+diff --git a/database/seeds/ReservationDemandTableSeeder.php b/database/seeds/ReservationDemandTableSeeder.php
+index 5664a46..d04723d 100644
+--- a/database/seeds/ReservationDemandTableSeeder.php
++++ b/database/seeds/ReservationDemandTableSeeder.php
+@@ -14,19 +14,19 @@ class ReservationDemandTableSeeder extends Seeder
+     public function run()
+     {
+         $reservations =[
+-        'Brooke Williams' => ['Bring Computer', 'Bring Extra Practice'],
+-        'Lynn Shaw' => ['Midterm Review','Help on Assignment'],
+-        'Juana Hubbard' => ['Bring Extra Practice', 'Chapter Review'],
+-        'Tanya Day' => ['Final Review','Help on Project'],
+-        'Carl Casey' => ['Help on Project', 'Bring Computer'],
+-        'Warren Snyder' => ['Preview Chapter', 'Bring Extra Practice']
++        1 => ['Bring Computer', 'Bring Extra Practice'],
++        2 => ['Midterm Review','Help on Assignment'],
++        3 => ['Bring Extra Practice', 'Chapter Review'],
++        4 => ['Final Review','Help on Project'],
++        5 => ['Help on Project', 'Bring Computer'],
++        6 => ['Preview Chapter', 'Bring Extra Practice']
+     ];
+ 
+     # Now loop through the above array, creating a new pivot for each reservation to demand
+-    foreach ($reservations as $name => $demands) {
++    foreach ($reservations as $id => $demands) {
+ 
+         # First get the reservation
+-        $reservation = Reservation::where('name', 'like', $name)->first();
++        $reservation = Reservation::where('student_id', $id)->first();
+ 
+         # Now loop through each demand for this reservation, adding the pivot
+         foreach ($demands as $demandName) {
+diff --git a/database/seeds/ReservationsTableSeeder.php b/database/seeds/ReservationsTableSeeder.php
+index 2e85d8f..0a53890 100644
+--- a/database/seeds/ReservationsTableSeeder.php
++++ b/database/seeds/ReservationsTableSeeder.php
+@@ -38,7 +38,6 @@ class ReservationsTableSeeder extends Seeder
+             'created_at' => Carbon\Carbon::now(),
+             'updated_at' => Carbon\Carbon::now(),
+             'student_id' => $student_id,
+-            'name' => $reservation[0],
+             'subject' => $reservation[1],
+             'location' => $reservation[2],
+             'date' => $reservation[3],
+diff --git a/resources/views/p4/appointment.blade.php b/resources/views/p4/appointment.blade.php
+index f09020c..42c563e 100644
+--- a/resources/views/p4/appointment.blade.php
++++ b/resources/views/p4/appointment.blade.php
+@@ -19,8 +19,8 @@
+         <p>Please fill out the form below so that we can arrange an instructor to help you, * are required fields.</p>
+         
+ 
+-        <label for='name'>* Student Name</label>
+-        <select name='name' id='name'>
++        <label for='student_id'>* Student Name</label>
++        <select name='student_id' id='student_id'>
+         <option value='' selected='selected' disabled='disabled'>Choose one...</option>
+         @foreach($studentsForDropdown as $id => $name)
+             <option value='{{ $id }}'>{{ $name }}</option>

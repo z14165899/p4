@@ -19,8 +19,8 @@
         <p>Please fill out the form below so that we can arrange an instructor to help you, * are required fields.</p>
         
 
-        <label for='name'>* Student Name</label>
-        <select name='name' id='name'>
+        <label for='student_id'>* Student Name</label>
+        <select name='student_id' id='student_id'>
         <option value='' selected='selected' disabled='disabled'>Choose one...</option>
         @foreach($studentsForDropdown as $id => $name)
             <option value='{{ $id }}'>{{ $name }}</option>

@@ -14,19 +14,19 @@ class ReservationDemandTableSeeder extends Seeder
     public function run()
     {
         $reservations =[
-        'Brooke Williams' => ['Bring Computer', 'Bring Extra Practice'],
-        'Lynn Shaw' => ['Midterm Review','Help on Assignment'],
-        'Juana Hubbard' => ['Bring Extra Practice', 'Chapter Review'],
-        'Tanya Day' => ['Final Review','Help on Project'],
-        'Carl Casey' => ['Help on Project', 'Bring Computer'],
-        'Warren Snyder' => ['Preview Chapter', 'Bring Extra Practice']
+        1 => ['Bring Computer', 'Bring Extra Practice'],
+        2 => ['Midterm Review','Help on Assignment'],
+        3 => ['Bring Extra Practice', 'Chapter Review'],
+        4 => ['Final Review','Help on Project'],
+        5 => ['Help on Project', 'Bring Computer'],
+        6 => ['Preview Chapter', 'Bring Extra Practice']
     ];
 
     # Now loop through the above array, creating a new pivot for each reservation to demand
-    foreach ($reservations as $name => $demands) {
+    foreach ($reservations as $id => $demands) {
 
         # First get the reservation
-        $reservation = Reservation::where('name', 'like', $name)->first();
+        $reservation = Reservation::where('student_id', $id)->first();
 
         # Now loop through each demand for this reservation, adding the pivot
         foreach ($demands as $demandName) {

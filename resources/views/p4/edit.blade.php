@@ -17,8 +17,13 @@
         {{ method_field('put') }}
         {{ csrf_field() }}
 
-        <label for='name'>* Your Name</label>
-        <input type='text' name='name' id='name' value='{{ $reservation->name }}'>
+        <label for='student_id'>* Student</label>
+        <select name='student_id' id='student_id'>
+        <option value='{{ $reservation->student_id }}' selected='selected' disabled='disabled'>Choose one...</option>
+        @foreach($studentsForDropdown as $id => $name)
+            <option value='{{ $id }}'>{{ $name }}</option>
+        @endforeach
+        </select>
         @include('modules.error', ['fieldName' => 'name'])
      
         <label for='subject'>* Subject for Help</label>
@@ -49,7 +54,7 @@
         <input type='text' name='topic' id='topic' value='{{ $reservation->topic }}'>
         @include('modules.error', ['fieldName' => 'topic'])
 
-         <label for='demands'>Your Requests</label>
+        <label for='demands'>Your Requests</label>
         <div>
         @foreach ($demandsForCheckboxes as $id => $name)
         <input type='checkbox' value='{{ $id }}' name='demands[]'

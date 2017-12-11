@@ -11,7 +11,7 @@
 @section('content')
     <h1>Confirm Deletion</h1>
     
-    <p>Are you sure you want to delete the appiontment of <strong>{{ $reservation->name }}</strong>?</p>
+    <p>Are you sure you want to delete the appiontment of <strong>{{ $reservation['student']['first_name'] }} {{ $reservation['student']['last_name'] }}</strong>?</p>
 
     <h2>{{ $reservation['name'] }}</h2>
         <p>Subject: {{ $reservation['subject'] }}</p>

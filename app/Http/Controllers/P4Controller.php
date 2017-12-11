@@ -47,14 +47,24 @@ class P4Controller extends Controller
     //Edit an Appiontment
      public function edit($id)
     {
-        $reservation = Reservation::find($id);
-        $demandsForCheckboxes = Demand::getForCheckboxes();
+        $reservation = Reservation::with('demands')->find($id);
 
         if (!$reservation) {
             return redirect('/reservations')->with('alert', 'Reservation not found');
         }
 
-        return view('p4.edit')->with(['reservation' => $reservation, 'demandsForCheckboxes' => $demandsForCheckboxes]);
+        $demandsForCheckboxes = Demand::getForCheckboxes();
+        $studentsForDropdown = Student::getForDropdown();
+
+        $demandsForThisReservation = [];
+        	foreach ($reservation->demands as $demand) {
+            	$demandsForThisReservation[] = $demand->name;
+        }
+
+        return view('p4.edit')->with(['reservation' => $reservation, 
+        	                          'demandsForCheckboxes' => $demandsForCheckboxes, 
+        	                          'studentsForDropdown' => $studentsForDropdown, 
+        	                      	  'demandsForThisReservation' => $demandsForThisReservation]);
     }
 
     //Edit a Course
@@ -100,7 +110,7 @@ class P4Controller extends Controller
      public function update(Request $request, $id)
     {
         $this->validate($request, [
-    	 	'name' => 'required|min:5',
+        	'student_id' => 'required',
             'subject' => 'required|min:3',
             'location' => 'required',
             'date' => 'required|date',
@@ -114,7 +124,7 @@ class P4Controller extends Controller
 
         $reservation->demands()->sync($request->input('demands'));
 
-        $reservation->name = $request->input('name');
+        $reservation->student_id = $request->input('student_id');
         $reservation->subject = $request->input('subject');
         $reservation->location = $request->input('location');
         $reservation->date = $request->input('date');
@@ -124,7 +134,10 @@ class P4Controller extends Controller
         $reservation->topic = $request->input('topic');
         $reservation->save();
 
-        return redirect('/reservations')->with('alert', 'Your changes of '.$reservation->name.'\'s appiontment were saved.');
+        $student = Student::where('id', $request->input('student_id'))->first();
+        $student_name = $student->first_name.' '.$student->last_name;
+
+        return redirect('/reservations')->with('alert', 'Your changes of '.$student_name.'\'s appiontment were saved.');
     }
 
     //Delete an course
@@ -173,9 +186,12 @@ class P4Controller extends Controller
 
 		$reservation->demands()->detach();
 
+		$student = Student::where('id', $reservation->student_id)->first();
+        $student_name = $student->first_name.' '.$student->last_name;
+
         $reservation->delete();
 
-        return redirect('/reservations')->with('alert', 'The appiontment of '.$reservation->name.' was deleted.');
+        return redirect('/reservations')->with('alert', 'The appiontment of '.$student_name.' was deleted.');
     }
 
 
@@ -200,7 +216,7 @@ class P4Controller extends Controller
     //Show all Reservations
     public function reservations()
     {
-    	$reservations = Reservation::orderBy('name')->get();
+    	$reservations = Reservation::leftJoin('students', 'reservations.student_id', '=', 'students.id')->orderBy('students.first_name')->get();
 
         return view('p4.reservations')->with([
             'reservations' => $reservations,
@@ -210,7 +226,7 @@ class P4Controller extends Controller
     //Make an Appointment
     public function reserve(Request $request){
     	 $this->validate($request, [
-    	  	'name' => 'required',
+    	  	'student_id' => 'required',
             'subject' => 'required|min:3',
             'location' => 'required|min:5',
             'date' => 'required|date',
@@ -222,7 +238,6 @@ class P4Controller extends Controller
 
         # Add a new reservation to the database
         $reservation = new Reservation();
-        $reservation->name = $request->input('name');
         $reservation->subject = $request->input('subject');
         $reservation->location = $request->input('location');
         $reservation->date = $request->input('date');
@@ -230,11 +245,14 @@ class P4Controller extends Controller
         $reservation->end_time = $request->input('end_time');
         $reservation->phone = $request->input('phone');
         $reservation->topic = $request->input('topic');
-        $reservation->student_id = $request->input('student');
+        $reservation->student_id = $request->input('student_id');
         $reservation->save();
         $reservation->demands()->sync($request->input('demands'));
 
-        return redirect('/reservations')->with('alert', 'This reservation of '.$request->input('name').' was added.');
+        $student = Student::where('id', $request->input('student_id'))->first();
+        $student_name = $student->first_name.' '.$student->last_name;
+
+        return redirect('/reservations')->with('alert', 'This reservation of '.$student_name.' was added.');
     }
 }
 

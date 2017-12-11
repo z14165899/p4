@@ -38,7 +38,6 @@ class ReservationsTableSeeder extends Seeder
             'created_at' => Carbon\Carbon::now(),
             'updated_at' => Carbon\Carbon::now(),
             'student_id' => $student_id,
-            'name' => $reservation[0],
             'subject' => $reservation[1],
             'location' => $reservation[2],
             'date' => $reservation[3],
