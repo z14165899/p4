@@ -23,7 +23,10 @@ nav ul {
 
 nav ul li {
     display:inline-block;
-    padding:10px;
+    padding:12px;
+    border-style: outset;
+    margin: 1em;
+    border-radius: 2em
 }
 
 nav ul li a:link {
@@ -38,4 +41,21 @@ nav ul li a:hover {
 
 a.active:link, a.active:visited, a.active:active, a.active:hover {
     color:#18bc9c;
+}
+
+.alert {
+    background-color:yellow;
+    width:100%;
+    left:0;
+    font-weight:bold;
+    text-align:center;
+    margin: 0px;
+}
+
+.error {
+    list-style-type:none;
+    color:#a94442; /* reddish */
+    margin:0;
+    padding:0;
+    font-style:italic;
 }

@@ -1,7 +1,6 @@
 label {
     margin-top:20px;
     display:block;
-    font-size:1.2rem;
     letter-spacing:.75px;
     font-weight:bold;
 }
@@ -22,7 +21,7 @@ form {
     padding: 15px;
 }
 
-input{
+input, select{
 	width:20%;
 	height:3em;
 	margin: 1em;
@@ -33,4 +32,14 @@ input[type='submit']{
     font: 1.3em bold;
     width: 20%;
     height: 5em;
+    border-radius: 50px;
+}
+
+div{
+    text-align: left;
+    width: 40%;
+    margin: auto;
+    padding: 2em;
+    position: relative;
+    left: 8%;
 }

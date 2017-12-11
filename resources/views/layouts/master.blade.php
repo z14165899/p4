@@ -7,11 +7,13 @@
 
 	<meta charset='utf-8'>
     <link href="/css/p4.css" type='text/css' rel='stylesheet'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
     
     @stack('head')
 </head>
     
 <body>
+
 	<header>
 		<a href='/'><img
             src='/img/tutoring.jpg'
@@ -21,6 +23,12 @@
 	</header>
 
 	<section>
+		@if(session('alert'))
+			<div class='alert'>
+			{{ session('alert') }}
+			</div>
+		@endif
+	
 		@yield('content')
 	</section>
 

@@ -1,0 +1,25 @@
+body {
+	text-align:center;
+	margin: 0 auto;
+}
+
+div {
+	display: flex;
+}
+
+section p{
+	font-size: 1.2em;
+}
+
+h1 {
+	border: 5px solid red;
+    border-style: dotted;
+    padding: 0.5em;
+    display: block;
+    width: 80%;
+    margin: 0.5em auto;
+}
+
+form, div p {
+	margin: auto;
+}

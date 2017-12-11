@@ -12,6 +12,7 @@
 
     <h1>All My Tutoring Sessions are listed below</h1>
 
+    <div>
     @foreach($reservations as $reservation)
         <div>
             <h2>{{ $reservation['name'] }}</h2>
@@ -26,5 +27,5 @@
             <a href='/reservation/{{ $reservation['id'] }}/delete'>Delete</a>
         </div>
     @endforeach
-
+    </div>
 @endsection

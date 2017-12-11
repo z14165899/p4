@@ -9,6 +9,10 @@ div{
 	margin: 1em;
 }
 
+div p{
+	font-size: 0.7em;
+}
+
 
 div img{
 	height: 400px;
