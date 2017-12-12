@@ -12,8 +12,6 @@
     <h1>Confirm Deletion</h1>
     
     <p>Are you sure you want to delete the appiontment of <strong>{{ $reservation['student']['first_name'] }} {{ $reservation['student']['last_name'] }}</strong>?</p>
-
-    <h2>{{ $reservation['name'] }}</h2>
         <p>Subject: {{ $reservation['subject'] }}</p>
         <p>Location: {{ $reservation['location'] }}</p>
         <p>Date: {{ $reservation['date'] }}</p>

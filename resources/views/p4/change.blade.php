@@ -26,7 +26,7 @@
         @include('modules.error', ['fieldName' => 'level'])
 
         <label for='instructor'>* Instructor</label>
-        <input type='text' max='50' name='instructor' id='instructor' value='{{ $course->instructor }}'>
+        <input type='text' name='instructor' id='instructor' value='{{ $course->instructor }}'>
         @include('modules.error', ['fieldName' => 'instructor'])
       
         <label for='image'>* Course Image </label>
@@ -45,7 +45,7 @@
         <input type='text' name='link' id='link' value='{{ $course->link }}'>
         @include('modules.error', ['fieldName' => 'link'])
         
-        </br>
+        <br/>
         <input type='submit' value='Edit this Course' class='btn btn-primary btn-small'>
     </form>
 
