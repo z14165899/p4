@@ -29,31 +29,31 @@
         @include('modules.error', ['fieldName' => 'name'])
 
         <label for='subject'>* Subject for Help</label>
-        <input type='text' name='subject' id='subject' placeholder="Please enter your subject" value={{ old('subject') }}>
+        <input type='text' name='subject' id='subject' placeholder="Please enter your subject" value={{ old('subject', '') }}>
         @include('modules.error', ['fieldName' => 'subject'])
 
         <label for='location'>* Location</label>
-        <input type='text' name='location' id='location' placeholder="Please enter your address" value={{ old('location') }}>
+        <input type='text' name='location' id='location' placeholder="Please enter your address" value={{ old('location', '') }}>
         @include('modules.error', ['fieldName' => 'location'])
 
         <label for='date'>* Date </label>
-        <input type='date' name='date' id='date' value={{ old('date') }}>
+        <input type='date' name='date' id='date' value={{ old('date'), '' }}>
         @include('modules.error', ['fieldName' => 'date'])
 
         <label for='start_time'>* Start Time </label>
-        <input type='time' name='start_time' id='start_time' value={{ old('start_time') }}>
+        <input type='time' name='start_time' id='start_time' value={{ old('start_time'), '' }}>
         @include('modules.error', ['fieldName' => 'start_time'])
 
         <label for='end_time'>* End Time </label>
-        <input type='time' name='end_time' id='end_time' value={{ old('end_time') }}>
+        <input type='time' name='end_time' id='end_time' value={{ old('end_time'), '' }}>
         @include('modules.error', ['fieldName' => 'end_time'])
 
         <label for='phone'>* Phone Number </label>
-        <input type='tel' name='phone' id='phone' placeholder="Enter your phone number" value={{ old('phone') }}>
+        <input type='tel' name='phone' id='phone' placeholder="Enter your phone number" value={{ old('phone'), '' }}>
         @include('modules.error', ['fieldName' => 'phone'])
 
         <label for='topic'>* Topic </label>
-        <input type='text' name='topic' id='topic' placeholder="Enter your topic that you need help" value={{ old('topic') }}>
+        <input type='text' name='topic' id='topic' placeholder="Enter your topic that you need help" value={{ old('topic'), '' }}>
         @include('modules.error', ['fieldName' => 'topic'])  
         
         <label>Your Requests</label>
