@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
 	<title>
         @yield('title', 'Project 4')
@@ -28,7 +28,7 @@
 			{{ session('alert') }}
 			</div>
 		@endif
-	
+
 		@yield('content')
 	</section>
 
