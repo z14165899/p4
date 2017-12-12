@@ -61,11 +61,11 @@
         @foreach ($demandsForCheckboxes as $id => $name)
         <input type='checkbox' value='{{ $id }}' name='demands[]'
             {{ (isset($demandsForThisReservation) and in_array($name, $demandsForThisReservation)) ? 'CHECKED' : '' }}>
-            {{ $name }} </br>
+            {{ $name }} <br/>
         @endforeach
         </div>
 
-        </br>
+        <br/>
         <input type='submit' value='Make this Appointment' class='btn btn-primary btn-small'>
     </form>
 
