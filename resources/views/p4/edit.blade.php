@@ -54,10 +54,10 @@
         <input type='text' name='topic' id='topic' value='{{ $reservation->topic }}'>
         @include('modules.error', ['fieldName' => 'topic'])
 
-        <label for='demands'>Your Requests</label>
+        <label>Your Requests</label>
         <div>
         @foreach ($demandsForCheckboxes as $id => $name)
-        <input type='checkbox' value='{{ $id }}' id='demands' name='demands[]'
+        <input type='checkbox' value='{{ $id }}' name='demands[]'
             {{ (isset($demandsForThisReservation) and in_array($name, $demandsForThisReservation)) ? 'CHECKED' : '' }}>
             {{ $name }} <br/>
         @endforeach
