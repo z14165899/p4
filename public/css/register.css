@@ -24,4 +24,5 @@ input[type='submit']{
     font: 1.3em bold;
     width: 20%;
     height: 5em;
+    border-radius: 5em;
 }

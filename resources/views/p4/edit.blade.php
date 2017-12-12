@@ -31,7 +31,7 @@
         @include('modules.error', ['fieldName' => 'subject'])
 
         <label for='location'>* Location</label>
-        <input type='text' max='50' name='location' id='location' value='{{ $reservation->location }}'>
+        <input type='text' name='location' id='location' value='{{ $reservation->location }}'>
         @include('modules.error', ['fieldName' => 'location'])
       
         <label for='date'>* Date </label>
@@ -57,13 +57,13 @@
         <label for='demands'>Your Requests</label>
         <div>
         @foreach ($demandsForCheckboxes as $id => $name)
-        <input type='checkbox' value='{{ $id }}' name='demands[]'
+        <input type='checkbox' value='{{ $id }}' id='demands' name='demands[]'
             {{ (isset($demandsForThisReservation) and in_array($name, $demandsForThisReservation)) ? 'CHECKED' : '' }}>
-            {{ $name }} <br>
+            {{ $name }} <br/>
         @endforeach
         </div>
         
-        </br>
+        <br/>
         <input type='submit' value='Edit this Appointment' class='btn btn-primary btn-small'>
     </form>
 
