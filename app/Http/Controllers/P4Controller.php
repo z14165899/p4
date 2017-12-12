@@ -83,10 +83,10 @@ class P4Controller extends Controller
 	public function modify(Request $request, $id)
     {
         $this->validate($request, [
-    	 	'name' => 'required|min:5',
+    	 	'name' => 'required|min:4',
             'level' => 'required',
             'instructor' => 'required|min:5',
-            'image' => 'required|url',
+            'image' => 'required',
             'description' => 'required|min:10',
             'price' => 'required',
             'link' => 'required|url',
@@ -216,11 +216,12 @@ class P4Controller extends Controller
     //Show all Reservations
     public function reservations()
     {
-    	$reservations = Reservation::leftJoin('students', 'reservations.student_id', '=', 'students.id')->orderBy('students.first_name')->get();
+     	$reservations = Reservation::leftJoin('students', 'reservations.student_id', '=', 'students.id')->orderBy('students.first_name')->get();
+		//$reservations = Reservation::with(['student','demands']);
 
         return view('p4.reservations')->with([
             'reservations' => $reservations,
-        ]);;
+        ]);
     }
 
     //Make an Appointment

@@ -24,7 +24,10 @@
             <p>Phone Number: {{ $reservation['phone'] }}</p>
             <p>Topic: {{ $reservation['topic'] }}</p>
             <p>Demands:
-
+            @foreach($reservation->demands as $demand)
+                {{ $demand->name }},
+            @endforeach
+            </p>
             <a href='/reservation/{{ $reservation['id'] }}/edit'>Edit</a> |
             <a href='/reservation/{{ $reservation['id'] }}/delete'>Delete</a>
         </div>
