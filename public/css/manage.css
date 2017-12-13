@@ -3,9 +3,8 @@ h1{
 }
 
 div{
-	float:left;
-	text-align: center;
 	margin: 1em;
+	text-align: center;
 }
 
 div h2,p{
@@ -15,4 +14,10 @@ div h2,p{
 div img{
 	height: 400px;
 	width: 300px;
+}
+
+#courses{
+	display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
 }

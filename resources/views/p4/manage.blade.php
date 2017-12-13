@@ -10,6 +10,7 @@
 
 @section('content')
 <h1>All Course Information</h1>
+<div id='courses'>
 @foreach($courses as $course)
         <div>
             <img src='{{ $course['image'] }}' alt='Course image for {{ $course['name'] }}'>
@@ -20,5 +21,6 @@
             <a href='/course/{{ $course['id'] }}/delete'>Delete</a>
         </div>
     @endforeach
+</div>
 
 @endsection
