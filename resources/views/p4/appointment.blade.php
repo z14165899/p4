@@ -23,7 +23,7 @@
         <select name='student_id' id='student_id'>
         <option value='' selected='selected' disabled='disabled'>Choose one...</option>
         @foreach($studentsForDropdown as $id => $name)
-            <option value='{{ $id }}'>{{ $name }}</option>
+            <option value='{{ $id }}' {{ old('student_id') == $id ? 'selected' : '' }}>{{ $name }}</option>
         @endforeach
         </select>
         @include('modules.error', ['fieldName' => 'name'])
@@ -60,7 +60,7 @@
         <div>
         @foreach ($demandsForCheckboxes as $id => $name)
         <input type='checkbox' value='{{ $id }}' name='demands[]'
-            {{ (isset($demandsForThisReservation) and in_array($name, $demandsForThisReservation)) ? 'CHECKED' : '' }}>
+            {{ (old('demands') !== null && in_array($id, old('demands'))) ? 'checked' : '' }}>
             {{ $name }} <br/>
         @endforeach
         </div>

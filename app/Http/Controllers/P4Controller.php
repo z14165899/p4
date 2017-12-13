@@ -48,7 +48,7 @@ class P4Controller extends Controller
      public function edit($id)
     {
         $reservation = Reservation::with('demands')->find($id);
-
+        
         if (!$reservation) {
             return redirect('/reservations')->with('alert', 'Reservation not found');
         }
@@ -60,7 +60,7 @@ class P4Controller extends Controller
         	foreach ($reservation->demands as $demand) {
             	$demandsForThisReservation[] = $demand->name;
         }
-
+        
         return view('p4.edit')->with(['reservation' => $reservation, 
         	                          'demandsForCheckboxes' => $demandsForCheckboxes, 
         	                          'studentsForDropdown' => $studentsForDropdown, 
@@ -116,7 +116,7 @@ class P4Controller extends Controller
             'date' => 'required|date',
             'start_time' => 'required',
             'end_time' => 'required',
-            'phone' => 'required|min:10|numeric',
+            'phone' => 'required|regex:/\d{10,}/',
             'topic' => 'required|min:5',
         ]);
 
@@ -207,17 +207,14 @@ class P4Controller extends Controller
         ]);
     }
 
-    //Register an User
- 	public function register()
-    {
-        return view('p4.register');
-    }
 
     //Show all Reservations
     public function reservations()
     {
-     	$reservations = Reservation::leftJoin('students', 'reservations.student_id', '=', 'students.id')->orderBy('students.first_name')->get();
-		//$reservations = Reservation::with(['student','demands']);
+     	$reservations = Reservation::select('reservations.*', 'students.first_name', 'students.last_name')
+            ->leftJoin('students', 'reservations.student_id', '=', 'students.id')
+            ->orderBy('students.first_name')
+            ->get();
 
         return view('p4.reservations')->with([
             'reservations' => $reservations,
@@ -233,7 +230,7 @@ class P4Controller extends Controller
             'date' => 'required|date',
             'start_time' => 'required',
             'end_time' => 'required',
-            'phone' => 'required|min:10|numeric',
+            'phone' => 'required|regex:/\d{10,}/',
             'topic' => 'required|min:5',
         ]);
 

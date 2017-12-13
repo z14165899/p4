@@ -21,7 +21,7 @@
         <select name='student_id' id='student_id'>
         <option value='{{ $reservation->student_id }}' selected='selected' disabled='disabled'>Choose one...</option>
         @foreach($studentsForDropdown as $id => $name)
-            <option value='{{ $id }}'>{{ $name }}</option>
+            <option value='{{ $id }}' {{ $reservation->student_id == $id ? 'selected' : '' }}>{{ $name }}</option>
         @endforeach
         </select>
         @include('modules.error', ['fieldName' => 'name'])

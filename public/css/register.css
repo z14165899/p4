@@ -19,10 +19,14 @@ input{
 	margin: 1em;
 }
 
-input[type='submit']{
-	margin: 3em;
+button[type='submit']{
+	margin: 2em;
     font: 1.3em bold;
     width: 20%;
     height: 5em;
     border-radius: 5em;
+}
+
+h1, p{
+	text-align: center;
 }

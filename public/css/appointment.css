@@ -43,3 +43,16 @@ div{
     position: relative;
     left: 8%;
 }
+
+nav ul li:last-child{
+	border-style: none;
+	margin: 0px 14px;
+}
+
+nav ul li form{
+	border-style: outset;
+    border-radius: 2em;
+    margin-left: -0.6em;
+    padding: 12px;
+    margin: 0px;
+}

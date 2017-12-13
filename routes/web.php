@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'P4Controller@index');
-
+Route::group(['middleware' => 'auth'], function () {
 Route::get('/manage', 'P4Controller@manage');
 
 #Make an Appointment
@@ -39,8 +39,19 @@ Route::get('/reservation/{id}/delete', 'P4Controller@delete');
 Route::delete('/reservation/{id}', 'P4Controller@remove');
 
 Route::get('/reservations', 'P4Controller@reservations');
+});
 
-Route::get('/register', 'P4Controller@register');
+Route::get('/show-login-status', function () {
+    $user = Auth::user();
+
+    if ($user) {
+        dump('You are logged in.', $user->toArray());
+    } else {
+        dump('You are not logged in.');
+    }
+
+    return;
+});
 
 Route::get('/env', function () {
     dump(config('app.name'));
@@ -75,3 +86,5 @@ Route::get('/debug', function () {
 
     dump($debug);
 });
+Auth::routes();
+
