@@ -14,12 +14,12 @@
 	<p>We have served thousands of student on their courses from high school to university so that they can earn the ideal grade they deserve!<p>
 	<h2>Our Most Popular Courses Below</h2>
 	<div id='courses'>
-	  @foreach($courses as $course)
+		@foreach ($courses as $course)
 	        <div>
 	            <img src='{{ $course['image'] }}' alt='Course image for {{ $course['name'] }}'>
 	            <h2>{{ $course['name'] }} {{ $course['level'] }}</h2>
 	            <p>By {{ $course['instructor'] }}</p>
 	        </div>
-	    @endforeach
+	   	@endforeach
 	</div>
 @endsection

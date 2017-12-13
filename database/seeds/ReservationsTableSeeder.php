@@ -45,8 +45,8 @@ class ReservationsTableSeeder extends Seeder
             'end_time'=>$reservation[5],
             'phone'=>$reservation[6],
             'topic'=>$reservation[7]
-        ]);
-    }
+            ]);
+        }
     }
 }
 

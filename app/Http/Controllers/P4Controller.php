@@ -45,7 +45,7 @@ class P4Controller extends Controller
     }
 
     //Edit an Appiontment
-     public function edit($id)
+    public function edit($id)
     {
         $reservation = Reservation::with('demands')->find($id);
         
@@ -62,15 +62,16 @@ class P4Controller extends Controller
             	$demandsForThisReservation[] = $demand->name;
         }
         
-        return view('p4.edit')->with(['reservation' => $reservation, 
-        	                          'demandsForCheckboxes' => $demandsForCheckboxes, 
-        	                          'studentsForDropdown' => $studentsForDropdown, 
-        	                      	  'demandsForThisReservation' => $demandsForThisReservation,
-        	                      	  'coursesForDropdown' => $coursesForDropdown]);
+        return view('p4.edit')->with([
+        	'reservation' => $reservation, 
+        	'demandsForCheckboxes' => $demandsForCheckboxes, 
+        	'studentsForDropdown' => $studentsForDropdown, 
+        	'demandsForThisReservation' => $demandsForThisReservation,
+        	'coursesForDropdown' => $coursesForDropdown]);
     }
 
     //Edit a Course
-     public function change($id)
+    public function change($id)
     {
         $course = Course::find($id);
 
@@ -109,7 +110,7 @@ class P4Controller extends Controller
     }
 
     //Save the changed appointment to database
-     public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $this->validate($request, [
         	'student_id' => 'required',
@@ -142,35 +143,8 @@ class P4Controller extends Controller
         return redirect('/reservations')->with('alert', 'Your changes of '.$student_name.'\'s appiontment were saved.');
     }
 
-    //Delete an course
-     public function confirm($id)
-    {
-        $course = Course::find($id);
-
-        if (!$course) {
-            return redirect('/')->with('alert', 'Course not found');
-        }
-
-        return view('p4.destroy')->with(['course' => $course, 'previousUrl' => url()->previous() == url()->current() ? '/reservations' : url()->previous()]);
-    }
-
-     
-     public function destroy($id)
-    {
-        $course = Course::find($id);
-
-        if (!$course) {
-            return redirect('/course')->with('alert', 'Course not found');
-        }
-
-        $course->delete();
-
-        return redirect('/')->with('alert', $course->name.' '.$course->level.' was deleted.');
-    }
-
-
     //Delete an appiontment
-     public function delete($id)
+    public function delete($id)
     {
         $reservation = Reservation::find($id);
 
@@ -182,7 +156,7 @@ class P4Controller extends Controller
     }
 
      
-     public function remove(Request $request, $id)
+    public function remove(Request $request, $id)
     {
         $reservation = Reservation::find($id);
 

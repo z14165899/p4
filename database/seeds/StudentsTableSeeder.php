@@ -30,6 +30,6 @@ class StudentsTableSeeder extends Seeder
             'school_year' => $student[4]
         ]);
         $count--;
-    }
+    	}
     }
 }

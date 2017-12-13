@@ -24,7 +24,7 @@ if(Auth::check()) {
             <li><a href='/{{ $link }}' class='{{ Request::is($link) ? 'active' : '' }}'>{{ $label }}</a>
         @endforeach
 
-         @if(Auth::check())
+        @if(Auth::check())
             <li>
                 <form method='POST' id='logout' action='/logout'>
                     {{csrf_field()}}

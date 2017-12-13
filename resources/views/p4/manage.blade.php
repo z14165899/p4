@@ -11,16 +11,15 @@
 @section('content')
 <h1>All Course Information</h1>
 <div id='courses'>
-@foreach($courses as $course)
+@foreach ($courses as $course)
         <div>
             <img src='{{ $course['image'] }}' alt='Course image for {{ $course['name'] }}'>
             <h2>{{ $course['name'] }} {{$course['level']}}</h2>
             <p>By {{ $course['instructor'] }}</p>
             <a href='/course/{{ $course['id'] }}'>View</a> |
-            <a href='/course/{{ $course['id'] }}/edit'>Edit</a> |
-            <a href='/course/{{ $course['id'] }}/delete'>Delete</a>
+            <a href='/course/{{ $course['id'] }}/edit'>Edit</a>
         </div>
-    @endforeach
+@endforeach
 </div>
 
 @endsection

@@ -34,7 +34,7 @@ class ReservationDemandTableSeeder extends Seeder
 
             # Connect this demand to this reservation
             $reservation->demands()->save($demand);
-        }
-    }
+        	}	
+    	}
     }
 }

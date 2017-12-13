@@ -13,7 +13,6 @@
 </head>
     
 <body>
-
 	<header>
 		<a href='/'><img
             src='/img/tutoring.jpg'

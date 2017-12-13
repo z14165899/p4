@@ -13,7 +13,7 @@
     <h1>All My Tutoring Sessions are listed below</h1>
 
     <div>
-    @foreach($reservations as $reservation)
+    @foreach ($reservations as $reservation)
         <div>
             <h2>{{ $reservation['student']['first_name'] }} {{ $reservation['student']['last_name'] }}</h2>
             <p>Subject: {{ $reservation->course->subject() }}</p>
@@ -24,7 +24,7 @@
             <p>Phone Number: {{ $reservation['phone'] }}</p>
             <p>Topic: {{ $reservation['topic'] }}</p>
             <p>Demands:
-            @foreach($reservation->demands as $demand)
+            @foreach ($reservation->demands as $demand)
                 {{ $demand->name }},
             @endforeach
             </p>

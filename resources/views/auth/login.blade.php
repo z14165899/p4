@@ -15,11 +15,11 @@
         {{ csrf_field() }}
 
         <label for="email">E-Mail Address</label>
-        <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+        <input id="email" type="email" name="email" value="{{ old('email', 'chen@harvard.edu') }}" required autofocus>
         @include('modules.error', ['fieldName' => 'email'])
 
         <label for="password">Password</label>
-        <input id="password" type="password" name="password" required>
+        <input id="password" type="password" name="password" value='helloworld' required>
         @include('modules.error', ['fieldName' => 'password'])
 
         <label>

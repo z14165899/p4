@@ -36,8 +36,8 @@ class CoursesTableSeeder extends Seeder
             'description' => $course[4],
             'price' => $course[5],
             'link'=>$course[6]
-        ]);
-    }
+            ]);
+        }
     }
 }
 

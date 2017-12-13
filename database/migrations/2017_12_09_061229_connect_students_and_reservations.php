@@ -14,7 +14,7 @@ class ConnectStudentsAndReservations extends Migration
 
         $table->foreign('student_id')->references('id')->on('students');
 
-    });
+        });
     }
 
     /**
@@ -31,6 +31,6 @@ class ConnectStudentsAndReservations extends Migration
         $table->dropForeign('reservations_student_id_foreign');
 
         $table->dropColumn('student_id');
-    });
+        });
     }
 }

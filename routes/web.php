@@ -13,32 +13,28 @@
 
 Route::get('/', 'P4Controller@index');
 Route::group(['middleware' => 'auth'], function () {
-Route::get('/manage', 'P4Controller@manage');
+    Route::get('/manage', 'P4Controller@manage');
 
-#Make an Appointment
-Route::get('/appointment', 'P4Controller@appointment');
-Route::post('/reservations', 'P4Controller@reserve');
+    #Make an Appointment
+    Route::get('/appointment', 'P4Controller@appointment');
+    Route::post('/reservations', 'P4Controller@reserve');
 
-#View a Course
-Route::get('/course/{id}', 'P4Controller@show');
+    #View a Course
+    Route::get('/course/{id}', 'P4Controller@show');
 
-#Edit an Appiontment
-Route::get('/reservation/{id}/edit', 'P4Controller@edit');
-Route::put('/reservation/{id}', 'P4Controller@update');
+    #Edit an Appiontment
+    Route::get('/reservation/{id}/edit', 'P4Controller@edit');
+    Route::put('/reservation/{id}', 'P4Controller@update');
 
-#Edit a Course
-Route::get('/course/{id}/edit', 'P4Controller@change');
-Route::put('/course/{id}', 'P4Controller@modify');
+    #Edit a Course
+    Route::get('/course/{id}/edit', 'P4Controller@change');
+    Route::put('/course/{id}', 'P4Controller@modify');
 
-#Delete a Course
-Route::get('/course/{id}/delete', 'P4Controller@confirm');
-Route::delete('/course/{id}', 'P4Controller@destroy');
+    # Delete an Appointment
+    Route::get('/reservation/{id}/delete', 'P4Controller@delete');
+    Route::delete('/reservation/{id}', 'P4Controller@remove');
 
-# Delete an Appointment
-Route::get('/reservation/{id}/delete', 'P4Controller@delete');
-Route::delete('/reservation/{id}', 'P4Controller@remove');
-
-Route::get('/reservations', 'P4Controller@reservations');
+    Route::get('/reservations', 'P4Controller@reservations');
 });
 
 Route::get('/show-login-status', function () {
@@ -86,5 +82,6 @@ Route::get('/debug', function () {
 
     dump($debug);
 });
+
 Auth::routes();
 

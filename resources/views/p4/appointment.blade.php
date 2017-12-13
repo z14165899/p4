@@ -17,7 +17,6 @@
         {{ csrf_field() }}
 
         <p>Please fill out the form below so that we can arrange an instructor to help you, * are required fields.</p>
-        
 
         <label for='student_id'>* Student Name</label>
         <select name='student_id' id='student_id'>
