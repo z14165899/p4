@@ -24,10 +24,15 @@
             <option value='{{ $id }}' {{ $reservation->student_id == $id ? 'selected' : '' }}>{{ $name }}</option>
         @endforeach
         </select>
-        @include('modules.error', ['fieldName' => 'name'])
+        @include('modules.error', ['fieldName' => 'course_id'])
      
-        <label for='subject'>* Subject for Help</label>
-        <input type='text' name='subject' id='subject' value='{{ $reservation->subject }}'> 
+        <label for='course_id'>* Subject for Help</label>
++        <select name='course_id' id='course_id'>
++        <option value='' selected='selected' disabled='disabled'>Choose one...</option>
++        @foreach($coursesForDropdown as $id => $name)
++            <option value='{{ $id }}' {{ $reservation->course_id == $id ? 'selected' : '' }}>{{ $name }}</option>
++        @endforeach
++        </select>
         @include('modules.error', ['fieldName' => 'subject'])
 
         <label for='location'>* Location</label>

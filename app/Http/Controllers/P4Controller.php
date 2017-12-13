@@ -55,6 +55,7 @@ class P4Controller extends Controller
 
         $demandsForCheckboxes = Demand::getForCheckboxes();
         $studentsForDropdown = Student::getForDropdown();
+        $coursesForDropdown = Course::getForDropdown();
 
         $demandsForThisReservation = [];
         	foreach ($reservation->demands as $demand) {
@@ -64,7 +65,8 @@ class P4Controller extends Controller
         return view('p4.edit')->with(['reservation' => $reservation, 
         	                          'demandsForCheckboxes' => $demandsForCheckboxes, 
         	                          'studentsForDropdown' => $studentsForDropdown, 
-        	                      	  'demandsForThisReservation' => $demandsForThisReservation]);
+        	                      	  'demandsForThisReservation' => $demandsForThisReservation,
+        	                      	  'coursesForDropdown' => $coursesForDropdown]);
     }
 
     //Edit a Course
@@ -111,7 +113,7 @@ class P4Controller extends Controller
     {
         $this->validate($request, [
         	'student_id' => 'required',
-            'subject' => 'required|min:3',
+            'course_id' => 'required',
             'location' => 'required',
             'date' => 'required|date',
             'start_time' => 'required',
@@ -125,7 +127,7 @@ class P4Controller extends Controller
         $reservation->demands()->sync($request->input('demands'));
 
         $reservation->student_id = $request->input('student_id');
-        $reservation->subject = $request->input('subject');
+        $reservation->course_id = $request->input('course_id');
         $reservation->location = $request->input('location');
         $reservation->date = $request->input('date');
         $reservation->start_time = $request->input('start_time');
@@ -200,10 +202,12 @@ class P4Controller extends Controller
     {
     	$studentsForDropdown = Student::getForDropdown();
     	$demandsForCheckboxes = Demand::getForCheckboxes();
+    	$coursesForDropdown = Course::getForDropdown();
 
         return view('p4.appointment')->with([
         	'studentsForDropdown' => $studentsForDropdown,
         	'demandsForCheckboxes' => $demandsForCheckboxes,
+        	'coursesForDropdown' => $coursesForDropdown,
         ]);
     }
 
@@ -225,7 +229,7 @@ class P4Controller extends Controller
     public function reserve(Request $request){
     	 $this->validate($request, [
     	  	'student_id' => 'required',
-            'subject' => 'required|min:3',
+            'course_id' => 'required',
             'location' => 'required|min:5',
             'date' => 'required|date',
             'start_time' => 'required',
@@ -236,7 +240,7 @@ class P4Controller extends Controller
 
         # Add a new reservation to the database
         $reservation = new Reservation();
-        $reservation->subject = $request->input('subject');
+        $reservation->course_id = $request->input('course_id');
         $reservation->location = $request->input('location');
         $reservation->date = $request->input('date');
         $reservation->start_time = $request->input('start_time');

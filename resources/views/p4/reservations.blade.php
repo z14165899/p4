@@ -16,7 +16,7 @@
     @foreach($reservations as $reservation)
         <div>
             <h2>{{ $reservation['student']['first_name'] }} {{ $reservation['student']['last_name'] }}</h2>
-            <p>Subject: {{ $reservation['subject'] }}</p>
+            <p>Subject: {{ $reservation->course->subject() }}</p>
             <p>Location: {{ $reservation['location'] }}</p>
             <p>Date: {{ $reservation['date'] }}</p>
             <p>Start Time: {{ $reservation['start_time'] }}</p>
