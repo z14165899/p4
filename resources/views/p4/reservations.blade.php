@@ -19,7 +19,6 @@
             <p>Subject: {{ $reservation['subject'] }}</p>
             <p>Location: {{ $reservation['location'] }}</p>
             <p>Date: {{ $reservation['date'] }}</p>
-            <br/>
             <p>Start Time: {{ $reservation['start_time'] }}</p>
             <p>End Time: {{ $reservation['end_time'] }}</p>
             <p>Phone Number: {{ $reservation['phone'] }}</p>
@@ -29,7 +28,6 @@
                 {{ $demand->name }},
             @endforeach
             </p>
-            <br/>
             <a href='/reservation/{{ $reservation['id'] }}/edit'>Edit</a> |
             <a href='/reservation/{{ $reservation['id'] }}/delete'>Delete</a>
         </div>
